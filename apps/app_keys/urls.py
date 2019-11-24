@@ -6,6 +6,6 @@ from .views import ApplicationViewSet, TestView
 router = DefaultRouter()
 router.register(r'applications', ApplicationViewSet, basename='application')
 urlpatterns = [
-    path('test', TestView.as_view()),
+    path('test', TestView.as_view(), basename='application-test'),
 ]
 urlpatterns += router.urls
