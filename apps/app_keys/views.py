@@ -21,7 +21,7 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 
 class TestView(views.APIView):
     def get(self, request, format=None):
-        key = self.request.META.get('HTTP_X_API_KEY')
+        key = request.headers.get('x-api-key')
         application = Application.objects.filter(key=key).first()
         if not application:
             raise NotAuthenticated(detail='Please specify correct X-API-KEY header')
